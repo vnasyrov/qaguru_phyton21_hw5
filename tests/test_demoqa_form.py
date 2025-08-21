@@ -1,7 +1,7 @@
 from selene import browser, have, command, be
 
 def test_submit_form():
-
+    browser.config.timeout = 2
     browser.config.window_width = 1920
     browser.config.window_height = 1080
 
@@ -11,11 +11,16 @@ def test_submit_form():
     browser.element("#userEmail").type('user@example.com').press_enter()
     browser.element('label[for="gender-radio-1"]').click()
     browser.element("#userNumber").type('8999999999').press_enter()
+
+    # Дата рождения
     #browser.element("#dateOfBirthInput").type('12 Jul 1993').press_enter()
     browser.element('#dateOfBirthInput').perform(command.js.click)
     browser.element('.react-datepicker__month-select').element('option[value="6"]').click()
     browser.element('.react-datepicker__year-select').element('option[value="1993"]').click()
     browser.element('.react-datepicker__day--012').perform(command.js.click)
 
-
+    # Subjects. Клик по контейнеру, чтобы поле стало активным
+    browser.element('.subjects-auto-complete__input').perform(command.js.click)
+    # Subjects. Ввести текст через внутренний input
+    browser.element('.subjects-auto-complete__input input').type('Python').press_enter()
 pass
