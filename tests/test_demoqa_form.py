@@ -23,4 +23,10 @@ def test_submit_form():
     browser.element('.subjects-auto-complete__input').perform(command.js.click)
     # Subjects. Ввести текст через внутренний input
     browser.element('.subjects-auto-complete__input input').type('Python').press_enter()
+
+    # Hobbies
+    browser.element('label[for="hobbies-checkbox-1"]').perform(command.js.click)
+
+    # Current Address
+    browser.element("#currentAddress").type('Los Angeles').press_enter()
 pass
