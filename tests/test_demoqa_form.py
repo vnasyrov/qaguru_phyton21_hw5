@@ -1,6 +1,5 @@
 from selene import browser, have
 
-
 def test_demoqa_form():
     # Настройка браузера
     browser.config.timeout = 6
