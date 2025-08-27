@@ -10,7 +10,7 @@ def test_submit_form():
     browser.element("#lastName").type('Насыров').press_enter()
     browser.element("#userEmail").type('user@example.com').press_enter()
     browser.element('label[for="gender-radio-1"]').click()
-    browser.element("#userNumber").type('8999999999').press_enter()
+    browser.element("#userNumber").type('999999999').press_enter()
 
     # Дата рождения
     #browser.element("#dateOfBirthInput").type('12 Jul 1993').press_enter()
@@ -27,6 +27,11 @@ def test_submit_form():
     # Hobbies
     browser.element('label[for="hobbies-checkbox-1"]').perform(command.js.click)
 
+    # Picture
+    browser.element('#uploadPicture').set_value('/Users/user/Desktop/Снимок экрана 2025-08-03 в 20.17.57.png')
+
     # Current Address
     browser.element("#currentAddress").type('Los Angeles').press_enter()
+
+
 pass
