@@ -2,9 +2,14 @@ from selene import browser, have
 
 def test_demoqa_form():
     # Настройка браузера
-    browser.config.timeout = 6
+    browser.config.timeout = 2
     # Открываем форму
     browser.open('https://demoqa.com/automation-practice-form')
+
+    # Убираем баннер и футер, мешающие кнопке Submit
+    browser.driver.execute_script("$('#fixedban').remove()")
+    browser.driver.execute_script("$('footer').remove()")
+
     # Основные поля
     browser.element("#firstName").type('Valeriy')
     browser.element("#lastName").type('Nasyrov')
@@ -17,11 +22,11 @@ def test_demoqa_form():
     browser.element('.react-datepicker__year-select').element('option[value="1993"]').click()
     browser.element('.react-datepicker__day--012').click()
     # Subjects
-    browser.element('#subjectsInput').type('Python').press_enter()
+    browser.element('#subjectsInput').type('Maths').press_enter()
     # Hobbies
     browser.element('label[for="hobbies-checkbox-1"]').click()
     # Picture
-    browser.element('#uploadPicture').set_value('/Users/user/Desktop/Снимок экрана 2025-08-03 в 20.17.57.png')
+    browser.element('#uploadPicture').set_value('/Users/user/Desktop/logo.jpg')
     # Current Address
     browser.element("#currentAddress").type('Los Angeles')
     # State
@@ -40,9 +45,9 @@ def test_demoqa_form():
         'Male',
         '9999999999',
         '12 July,1993',
-        'Python',
+        'Maths',
         'Sports',
-        '/Users/user/Desktop/Снимок экрана 2025-08-03 в 20.17.57.png',
+        'logo.jpg',
         'Los Angeles',
         'NCR Delhi'
     ))
